@@ -5,6 +5,8 @@ import './App.css'
 import New from './pages/New'
 import Root from './pages/root'
 import Navbar from './components/Navbar'
+import Blogs from './pages/Blogs'
+import { Post, PostList } from './pages/Blogs'
 
 function NoMatch() {
   return (
@@ -23,6 +25,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Root />} />
           <Route path="/new" element={<New />} />
+          <Route path="/blogs" element={<Blogs />}>
+            <Route index element={<PostList />} />
+            <Route path=":slug" element={<Post />} />
+          </Route>
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Router>
