@@ -5,18 +5,23 @@
 
 /* navigation bar css */
 nav {
-  background-color: rgba(0, 0, 0, 0.478);
+  background-color: #bc382e;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 nav a {
   color: white;
-  padding: 3px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   border-radius: 4px;
   text-decoration: none;
-  margin: 10px;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 a:hover {
-  background-color: rgba(0, 0, 0, 0.774);
+  color: rgba(255, 255, 255, 0.629);
 }
