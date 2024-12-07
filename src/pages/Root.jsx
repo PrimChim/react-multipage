@@ -1,23 +1,35 @@
-import '../assets/css/Root.css'
+import '../assets/css/Root.css';
+import { useState, useEffect } from 'react';
 
-export default function Root(){
-    return(
-        <>
-        <div className="main">
-            <h1>Publish your passions, your way</h1>
-            <p>Create a unique and beautiful blog easily.</p>
-            <button style={{
-                textTransform: "uppercase",
-                padding: ".875rem 1.25rem",
-                border: "none",
-                backgroundColor: "#ff9224",
-                color: "rgb(255, 255, 255)",
-                borderRadius: "4px",
-                fontWeight: '700',
-                height: '50px',
-                fontSize: '.8rem',
-            }}>Create Your Blog</button>
-        </div>
-        </>
-    )
+const backgroundColors = ['#388d80', '#4583aa', '#bc382e'];
+
+export default function Root() {
+  const [bgColor, setBgColor] = useState(backgroundColors[0]);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = bgColor;
+    document.body.style.transition = 'background-color 1.5s ease-in-out';
+
+    let index = 0;
+    const interval = setInterval(() => {
+      index = (index + 1) % backgroundColors.length;
+      const newColor = backgroundColors[index];
+      setBgColor(newColor);
+      document.body.style.backgroundColor = newColor;
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [bgColor]);
+
+  return (
+    <div className="main">
+      <h1>Publish your passions, your way</h1>
+      <p>Create a unique and beautiful blog easily.</p>
+      <button className="primary-btn">
+        Create Your Blog
+      </button>
+    </div>
+  );
 }
